@@ -32,8 +32,8 @@ public class Lista extends RecyclerView.Adapter<ListaVH> {
     ArrayList<Integer> crediteleInt=new ArrayList<>();
     ArrayList<Materie> items;
     static  int counter=0;
-   static ArrayList<String> stringNota = new ArrayList<String>();
-    static ArrayList<String> stringCredit = new ArrayList<String>();
+    ArrayList<String> stringNota = new ArrayList<String>();
+    ArrayList<String> stringCredit = new ArrayList<String>();
     boolean isOnTextChangedNote = false, isOnTextChangedCredit = false;
 
 
@@ -94,9 +94,6 @@ public class Lista extends RecyclerView.Adapter<ListaVH> {
                                 stringNota.add("0");
                             } else {
                                 stringNota.add("0");
-//                                if(stringNota.size()==1){
-//                                    position1=0;
-//                                }
                                 Log.d("pozitie eroare",""+position1);
                                 Log.d("marime vector",""+stringNota.size());
                                 stringNota.set(position1, s.toString());

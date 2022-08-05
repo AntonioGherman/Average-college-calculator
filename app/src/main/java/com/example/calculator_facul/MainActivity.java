@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     int counter=1,i=0;
     Lista lista;
     TextView media;
+    ArrayList<Float> note=new ArrayList<>();
+    ArrayList<Float> credite=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.add).setOnClickListener(v->{
             items.add(new Materie(counter,findViewById(R.id.nota),findViewById(R.id.credite)));
             lista.notifyItemInserted(items.size()-1);
+            lista.stringNota.add("0");
+            lista.stringCredit.add("0");
             i++;
             counter++;
             recyclerView.scrollToPosition(items.size()-1);
