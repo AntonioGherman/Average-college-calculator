@@ -117,7 +117,7 @@ public class Lista extends RecyclerView.Adapter<ListaVH> {
                             if(stringCredit.get(i).compareTo("")!=0 && stringNota.get(i).compareTo("")!=0){
                                 Log.d("test1",":"+stringNota+"  "+stringCredit);
                                 if(stringNota.get(i).compareTo("")!=0 && stringCredit.get(i).compareTo("")!=0) {
-                                    suma = suma + Integer.parseInt(stringNota.get(i)) * Integer.parseInt(stringCredit.get(i));
+                                    suma = suma + Float.parseFloat(stringNota.get(i)) * Float.parseFloat(stringCredit.get(i));
                                     sumaCredit = sumaCredit + Integer.parseInt(stringCredit.get(i));
                                 }
                             }
@@ -142,7 +142,7 @@ public class Lista extends RecyclerView.Adapter<ListaVH> {
                         if(stringCredit.get(i).compareTo("")!=0 && stringNota.get(i).compareTo("")!=0){
                             Log.d("test2",":"+stringNota+"  "+stringCredit);
                             if(stringNota.get(i).compareTo("")!=0 && stringCredit.get(i).compareTo("")!=0) {
-                                suma = suma + Integer.parseInt(stringNota.get(i)) * Integer.parseInt(stringCredit.get(i));
+                                suma = suma + Float.parseFloat(stringNota.get(i)) * Float.parseFloat(stringCredit.get(i));
                                 sumaCredit = sumaCredit + Integer.parseInt(stringCredit.get(i));
                             }
                         }
@@ -204,7 +204,7 @@ public class Lista extends RecyclerView.Adapter<ListaVH> {
                         for (int i = 0; i < stringNota.size() && i < stringCredit.size(); i++) {
                             if(stringCredit.get(i).compareTo("")!=0 && stringNota.get(i).compareTo("")!=0){
                                 Log.d("test3",":"+stringNota+"  "+stringCredit);
-                                suma = suma + Integer.parseInt(stringNota.get(i)) * Integer.parseInt(stringCredit.get(i));
+                                suma = suma + Float.parseFloat(stringNota.get(i)) * Float.parseFloat(stringCredit.get(i));
                                 sumaCredit = sumaCredit + Integer.parseInt(stringCredit.get(i));
                             }
                         }
@@ -229,7 +229,7 @@ public class Lista extends RecyclerView.Adapter<ListaVH> {
 
                                 Log.d("test4",":"+stringNota+"  "+stringCredit);
 
-                                suma = suma + Integer.parseInt(stringNota.get(i)) * Integer.parseInt(stringCredit.get(i));
+                                suma = suma + Float.parseFloat(stringNota.get(i)) * Float.parseFloat(stringCredit.get(i));
                                 sumaCredit = sumaCredit + Integer.parseInt(stringCredit.get(i));
                             }
                         }
