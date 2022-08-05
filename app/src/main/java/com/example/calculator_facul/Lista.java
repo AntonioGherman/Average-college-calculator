@@ -27,7 +27,7 @@ public class Lista extends RecyclerView.Adapter<ListaVH> {
     ArrayList<EditText> TextMaterie=new ArrayList<>();
     ArrayList<EditText> TextNote =new ArrayList<>();
     ArrayList<EditText> TextCredite = new ArrayList<>();
-
+String noteS,crediteS;
     ArrayList<Integer> noteleInt=new ArrayList<>();
     ArrayList<Integer> crediteleInt=new ArrayList<>();
     ArrayList<Materie> items;
@@ -91,36 +91,38 @@ public class Lista extends RecyclerView.Adapter<ListaVH> {
                         for (int i = 0; i <= position; i++) {
                             int position1 = position;
                             if (i != position1) {
-                                stringNota.add("0");
+//                                stringNota.add("0");
                             } else {
-                                stringNota.add("0");
-                                Log.d("pozitie eroare",""+position1);
-                                Log.d("marime vector",""+stringNota.size());
-                                stringNota.set(position1, s.toString());
-                                Log.d("marime vector dupa",""+stringNota.size());
-                                Log.d("pozitie",":"+position1);
-                                Log.d("verificare",":"+stringNota+"  "+stringCredit);
-                                if(stringNota.get(stringNota.size()-1).compareTo("0")==0){
-                                    stringNota.remove(stringNota.size()-1);
-                                }
+//                                stringNota.add("0");
+//                                Log.d("pozitie eroare",""+position1);
+//                                Log.d("marime vector",""+stringNota.size());
+//                                stringNota.set(position1, s.toString());
+                                noteS=s.toString();
+//                                Log.d("marime vector dupa",""+stringNota.size());
+//                                Log.d("pozitie",":"+position1);
+//                                Log.d("verificare",":"+stringNota+"  "+stringCredit);
+//                                if(stringNota.get(stringNota.size()-1).compareTo("0")==0){
+//                                    stringNota.remove(stringNota.size()-1);
+//                                }
                                 break;
                             }
-                            if(stringNota.get(stringNota.size()-1).compareTo("0")==0){
-                                stringNota.remove(stringNota.size()-1);
-                            }
+//                            if(stringNota.get(stringNota.size()-1).compareTo("0")==0){
+//                                stringNota.remove(stringNota.size()-1);
+//                            }
                         }
-                        float suma = 0, sumaCredit = 0;
-                        for (int i = 0; i < stringNota.size() && i < stringCredit.size(); i++) {
-                            if(stringCredit.get(i).compareTo("")!=0 && stringNota.get(i).compareTo("")!=0){
-                                Log.d("test1",":"+stringNota+"  "+stringCredit);
-                                if(stringNota.get(i).compareTo("")!=0 && stringCredit.get(i).compareTo("")!=0) {
-                                    suma = suma + Float.parseFloat(stringNota.get(i)) * Float.parseFloat(stringCredit.get(i));
-                                    sumaCredit = sumaCredit + Integer.parseInt(stringCredit.get(i));
-                                }
-                            }
-                        }
-                      //  Log.d("notele ",""+noteleInt);
-                        media.setText("Media: "+(suma/sumaCredit));
+//                        float suma = 0, sumaCredit = 0;
+//                        for (int i = 0; i < stringNota.size() && i < stringCredit.size(); i++) {
+//                            if(stringCredit.get(i).compareTo("")!=0 && stringNota.get(i).compareTo("")!=0){
+//                                Log.d("test1",":"+stringNota+"  "+stringCredit);
+//                                if(stringNota.get(i).compareTo("")!=0 && stringCredit.get(i).compareTo("")!=0) {
+//                                    suma = suma + Float.parseFloat(stringNota.get(i)) * Float.parseFloat(stringCredit.get(i));
+//                                    sumaCredit = sumaCredit + Integer.parseInt(stringCredit.get(i));
+//                                }
+//                            }
+//                        }
+//                      //  Log.d("notele ",""+noteleInt);
+
+//                        media.setText("Media: "+media());
 
 
 
@@ -129,23 +131,23 @@ public class Lista extends RecyclerView.Adapter<ListaVH> {
                         for (int i = 0; i <= stringNota.size() - 1; i++) {
                             int newposition = position;
                             if (i == newposition) {
-                                stringNota.set(newposition, "0");
+                              //  stringNota.set(newposition, "0");
                             }
                         }
                     }
 
-                    float suma = 0, sumaCredit = 0;
-                    for (int i = 0; i < stringNota.size() && i < stringCredit.size(); i++) {
-                        if(stringCredit.get(i).compareTo("")!=0 && stringNota.get(i).compareTo("")!=0){
-                            Log.d("test2",":"+stringNota+"  "+stringCredit);
-                            if(stringNota.get(i).compareTo("")!=0 && stringCredit.get(i).compareTo("")!=0) {
-                                suma = suma + Float.parseFloat(stringNota.get(i)) * Float.parseFloat(stringCredit.get(i));
-                                sumaCredit = sumaCredit + Integer.parseInt(stringCredit.get(i));
-                            }
-                        }
-                    }
-                //    Log.d("notele ",""+noteleInt);
-                    media.setText("Media: "+(suma/sumaCredit));
+//                    float suma = 0, sumaCredit = 0;
+//                    for (int i = 0; i < stringNota.size() && i < stringCredit.size(); i++) {
+//                        if(stringCredit.get(i).compareTo("")!=0 && stringNota.get(i).compareTo("")!=0){
+//                            Log.d("test2",":"+stringNota+"  "+stringCredit);
+//                            if(stringNota.get(i).compareTo("")!=0 && stringCredit.get(i).compareTo("")!=0) {
+//                                suma = suma + Float.parseFloat(stringNota.get(i)) * Float.parseFloat(stringCredit.get(i));
+//                                sumaCredit = sumaCredit + Integer.parseInt(stringCredit.get(i));
+//                            }
+//                        }
+//                    }
+//                //    Log.d("notele ",""+noteleInt);
+//                    media.setText("Media: "+media());
 
                 }
 
@@ -153,7 +155,10 @@ public class Lista extends RecyclerView.Adapter<ListaVH> {
             }
         });
 //        noteleInt.add(Integer.parseInt(stringNota.get(stringNota.size()-1)));
-
+Log.d("NOTA",""+noteS);
+stringNota.set(counter,noteS);
+Log.d("VERIFICARE NOTE",""+stringNota);
+//        media.setText("Media: "+media());
 
 
         credit.addTextChangedListener(new TextWatcher() {
@@ -178,35 +183,36 @@ public class Lista extends RecyclerView.Adapter<ListaVH> {
                         for (int i = 0; i <= position; i++) {
                             int position1 = position;
                             if (i != position1) {
-                                stringCredit.add("0");
+                              //  stringCredit.add("0");
                             } else {
-                                stringCredit.add("0");
-                                if(stringCredit.size()==1){
-                                    position1=0;
-                                }
-                                stringCredit.set(position1, s.toString());
-                                Log.d("verificare2",":"+stringNota+"  "+stringCredit);
-                                if(stringCredit.get(stringCredit.size()-1).compareTo("0")==0){
-                                    stringCredit.remove(stringCredit.size()-1);
-                                }
+                              //  stringCredit.add("0");
+//                                if(stringCredit.size()==1){
+//                                    position1=0;
+//                                }
+//                                stringCredit.set(position1, s.toString());
+                                crediteS=s.toString();
+//                                Log.d("verificare2",":"+stringNota+"  "+stringCredit);
+//                                if(stringCredit.get(stringCredit.size()-1).compareTo("0")==0){
+//                                    stringCredit.remove(stringCredit.size()-1);
+//                                }
                                 break;
                             }
-                            if(stringCredit.get(stringCredit.size()-1).compareTo("0")==0){
-                                stringCredit.remove(stringCredit.size()-1);
-                            }
+//                            if(stringCredit.get(stringCredit.size()-1).compareTo("0")==0){
+//                                stringCredit.remove(stringCredit.size()-1);
+//                            }
                         }
 
 
-                        float suma = 0, sumaCredit = 0;
-                        for (int i = 0; i < stringNota.size() && i < stringCredit.size(); i++) {
-                            if(stringCredit.get(i).compareTo("")!=0 && stringNota.get(i).compareTo("")!=0){
-                                Log.d("test3",":"+stringNota+"  "+stringCredit);
-                                suma = suma + Float.parseFloat(stringNota.get(i)) * Float.parseFloat(stringCredit.get(i));
-                                sumaCredit = sumaCredit + Integer.parseInt(stringCredit.get(i));
-                            }
-                        }
-                       // Log.d("creditele",""+crediteleInt);
-                        media.setText("Media: "+(suma/sumaCredit));
+//                        float suma = 0, sumaCredit = 0;
+//                        for (int i = 0; i < stringNota.size() && i < stringCredit.size(); i++) {
+//                            if(stringCredit.get(i).compareTo("")!=0 && stringNota.get(i).compareTo("")!=0){
+//                                Log.d("test3",":"+stringNota+"  "+stringCredit);
+//                                suma = suma + Float.parseFloat(stringNota.get(i)) * Float.parseFloat(stringCredit.get(i));
+//                                sumaCredit = sumaCredit + Integer.parseInt(stringCredit.get(i));
+//                            }
+//                        }
+//                       // Log.d("creditele",""+crediteleInt);
+//                     media.setText("Media: "+media());
 
 
 
@@ -215,23 +221,23 @@ public class Lista extends RecyclerView.Adapter<ListaVH> {
                         for (int i = 0; i <= stringCredit.size() - 1; i++) {
                             int newposition = position;
                             if (i == newposition) {
-                                stringCredit.set(newposition, "0");
+//                                stringCredit.set(newposition, "0");
                             }
                         }
 
 
-                        float suma = 0, sumaCredit = 0;
-                        for (int i = 0; i < stringNota.size() && i < stringCredit.size(); i++) {
-                            if(stringCredit.get(i).compareTo("")!=0 && stringNota.get(i).compareTo("")!=0){
-
-                                Log.d("test4",":"+stringNota+"  "+stringCredit);
-
-                                suma = suma + Float.parseFloat(stringNota.get(i)) * Float.parseFloat(stringCredit.get(i));
-                                sumaCredit = sumaCredit + Integer.parseInt(stringCredit.get(i));
-                            }
-                        }
-                        Log.d("creditele",""+crediteleInt);
-                        media.setText("Media: "+(suma/sumaCredit));
+//                        float suma = 0, sumaCredit = 0;
+//                        for (int i = 0; i < stringNota.size() && i < stringCredit.size(); i++) {
+//                            if(stringCredit.get(i).compareTo("")!=0 && stringNota.get(i).compareTo("")!=0){
+//
+//                                Log.d("test4",":"+stringNota+"  "+stringCredit);
+//
+//                                suma = suma + Float.parseFloat(stringNota.get(i)) * Float.parseFloat(stringCredit.get(i));
+//                                sumaCredit = sumaCredit + Integer.parseInt(stringCredit.get(i));
+//                            }
+//                        }
+//                        Log.d("creditele",""+crediteleInt);
+//                        media.setText("Media: "+media());
                     }
 
                 }
@@ -241,8 +247,11 @@ public class Lista extends RecyclerView.Adapter<ListaVH> {
         });
 //        crediteleInt.add(Integer.parseInt(stringCredit.get(stringCredit.size()-1)));
 //        counter++;
-
-
+        Log.d("CREDITE",""+crediteS);
+stringCredit.set(counter,crediteS);
+Log.d("VERIFICARE crEDITE",""+stringCredit);
+//        media.setText("Media: "+media());
+        counter++;
     }
 
     @Override
@@ -250,21 +259,21 @@ public class Lista extends RecyclerView.Adapter<ListaVH> {
         return items.size();
     }
 
-//    public float media() {
-//        float media;
-//        float suma = 0, sumaCredit = 0;
-//        for (int i = 0; i < stringNota.size() && i < stringCredit.size(); i++) {
-//
-//            suma=suma+noteleInt.get(i)*crediteleInt.get(i);
-//            sumaCredit=sumaCredit+crediteleInt.get(i);
-//        }
-//            if (suma == 0 && sumaCredit == 0) {
-//                return 0;
-//            } else {
-//                media = suma / sumaCredit;
-//                return media;
-//            }
-//        }
+    public float media() {
+        float media;
+        float suma = 0, sumaCredit = 0;
+        for (int i = 0; i < stringNota.size() && i < stringCredit.size(); i++) {
+            Log.d("greseala",""+stringNota+"   "+stringCredit);
+            suma=suma+Float.parseFloat(stringNota.get(i))*Float.parseFloat(stringCredit.get(i));
+            sumaCredit=sumaCredit+Float.parseFloat(stringCredit.get(i));
+        }
+            if (suma == 0 && sumaCredit == 0) {
+                return 0;
+            } else {
+                media = suma / sumaCredit;
+                return media;
+            }
+        }
 
 
     public void stergere() {
