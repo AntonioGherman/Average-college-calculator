@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fundal"
+    tools:context=".MainActivity">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="530dp"
+        android:layout_marginTop="-25dp"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:text="Calculator medie Facultate "
+            android:textAlignment="center"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/add"
+            android:layout_width="129dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="460dp"
+            android:backgroundTint="@color/fundal"
+            android:text="Adauga" />
+
+        <Button
+            android:id="@+id/delete"
+            android:layout_width="134dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="210dp"
+            android:layout_marginTop="460dp"
+            android:backgroundTint="@color/fundal"
+            android:text="Sterge" />
+
+        <ScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="390dp"
+            android:layout_marginTop="65dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/view"
+                    android:layout_width="match_parent"
+                    android:layout_height="390dp" />
+            </LinearLayout>
+        </ScrollView>
+
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_below="@+id/cardView"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="115dp"
+        android:layout_marginTop="40dp"
+        app:srcCompat="@drawable/afisare_medie" />
+
+    <TextView
+        android:id="@+id/media"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/imageView"
+        android:layout_alignTop="@+id/imageView"
+        android:layout_alignEnd="@+id/imageView"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
+        android:gravity="center"
+        android:text="Media: 0.0"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textIsSelectable="false"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</RelativeLayout>
