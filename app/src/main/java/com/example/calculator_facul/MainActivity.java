@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
             lista.notifyItemInserted(items.size()-1);
             i++;
             counter++;
+            recyclerView.scrollToPosition(items.size()-1);
         });
 
         findViewById(R.id.delete).setOnClickListener(v->{
