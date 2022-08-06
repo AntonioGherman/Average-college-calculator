@@ -6,6 +6,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,9 +35,9 @@ public class MainActivity extends AppCompatActivity {
 
         media=findViewById(R.id.media);
         ArrayList<Materie> items=new ArrayList<>();
-        items.add(new Materie(counter,findViewById(R.id.nota),findViewById(R.id.credite)));
+       items.add(new Materie(counter,findViewById(R.id.nota),findViewById(R.id.credite)));
 
-        counter++;
+       counter++;
 
         RecyclerView recyclerView=findViewById(R.id.view);
         recyclerView.setHasFixedSize(true);
@@ -43,34 +46,40 @@ public class MainActivity extends AppCompatActivity {
          lista=new Lista(items);
         recyclerView.setAdapter(lista);
         lista.notifyItemInserted(items.size()-1);
-     //   lista.stringNota.add("0");
-     //   lista.stringCredit.add("0");
 
         i++;
 
         findViewById(R.id.add).setOnClickListener(v->{
+
             items.add(new Materie(counter,findViewById(R.id.nota),findViewById(R.id.credite)));
+            Log.e("nr item adaugat",""+(items.size()-1));
             lista.notifyItemInserted(items.size()-1);
+            Log.e("nr item adaugat dupa",""+(items.size()-1));
          //   lista.stringNota.add("0");
-         //   lista.stringCredit.add("0");
+          //  lista.stringCredit.add("0");
             i++;
             counter++;
             recyclerView.scrollToPosition(items.size()-1);
-         //  media.setText("Media: "+String.valueOf(lista.media()));
         });
 
         findViewById(R.id.delete).setOnClickListener(v->{
-          if(items.size()!=0) {
+          if(items.size()!=1) {
               items.remove(items.size() - 1);
-              counter--;
-              lista.notifyItemRemoved(items.size());
+             counter--;
               lista.stergere();
-             media.setText("Media: "+String.valueOf(lista.media()));
+              Log.e("numarul de item INAINTE",""+items.size());
+              lista.notifyItemRemoved(items.size());
+              Log.e("numarul de item DUPA",""+items.size());
+
 
 
           }
-          else Toast.makeText(MainActivity.this,"Nu exista elemente de sters",Toast.LENGTH_SHORT).show();
-        });
+          else if(items.size()==1) {
+              lista.stergere();
+              Toast.makeText(MainActivity.this, "Nu exista elemente de sters", Toast.LENGTH_SHORT).show();
+              media.setText("Media: 0,00");
+          }
+          });
 
 
 
