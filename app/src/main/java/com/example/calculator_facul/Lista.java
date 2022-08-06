@@ -122,7 +122,7 @@ String noteS,crediteS;
 //                        }
 //                      //  Log.d("notele ",""+noteleInt);
 
-//                        media.setText("Media: "+media());
+                        media.setText("Media: "+media());
 
 
 
@@ -147,7 +147,7 @@ String noteS,crediteS;
 //                        }
 //                    }
 //                //    Log.d("notele ",""+noteleInt);
-//                    media.setText("Media: "+media());
+                    media.setText("Media: "+media());
 
                 }
 
@@ -156,8 +156,14 @@ String noteS,crediteS;
         });
 //        noteleInt.add(Integer.parseInt(stringNota.get(stringNota.size()-1)));
 Log.d("NOTA",""+noteS);
-stringNota.set(counter,noteS);
-Log.d("VERIFICARE NOTE",""+stringNota);
+stringNota.add(noteS);
+if(stringNota.get(0)==null){
+    stringNota.set(0,noteS);
+    stringNota.remove(stringNota.size()-1);
+}
+media.setText("Media: "+media());
+//stringNota.set(counter,noteS);
+Log.d("VERIFICARE NOTE",""+stringNota+"  "+stringNota.size());
 //        media.setText("Media: "+media());
 
 
@@ -212,7 +218,7 @@ Log.d("VERIFICARE NOTE",""+stringNota);
 //                            }
 //                        }
 //                       // Log.d("creditele",""+crediteleInt);
-//                     media.setText("Media: "+media());
+                     media.setText("Media: "+media());
 
 
 
@@ -237,7 +243,7 @@ Log.d("VERIFICARE NOTE",""+stringNota);
 //                            }
 //                        }
 //                        Log.d("creditele",""+crediteleInt);
-//                        media.setText("Media: "+media());
+                        media.setText("Media: "+media());
                     }
 
                 }
@@ -248,10 +254,30 @@ Log.d("VERIFICARE NOTE",""+stringNota);
 //        crediteleInt.add(Integer.parseInt(stringCredit.get(stringCredit.size()-1)));
 //        counter++;
         Log.d("CREDITE",""+crediteS);
-stringCredit.set(counter,crediteS);
-Log.d("VERIFICARE crEDITE",""+stringCredit);
-//        media.setText("Media: "+media());
+stringCredit.add(crediteS);
+        if(stringCredit.get(0)==null){
+            stringCredit.set(0,crediteS);
+            stringCredit.remove(stringCredit.size()-1);
+        }
+        //stringCredit.set(counter,crediteS);
+Log.d("VERIFICARE crEDITE",""+stringCredit+"  "+stringCredit.size());
+        media.setText("Media: "+media());
         counter++;
+//        float medianr ;
+//        float suma = 0, sumaCredit = 0;
+//        for (int i = 0; i < stringNota.size() && i < stringCredit.size(); i++) {
+//            Log.d("greseala",""+stringNota+"   "+stringCredit);
+//            if(!(stringNota.get(i).isEmpty())&&!(stringCredit.get(i).isEmpty())) {
+//                suma = suma + Float.parseFloat(stringNota.get(i)) * Float.parseFloat(stringCredit.get(i));
+//                sumaCredit = sumaCredit + Float.parseFloat(stringCredit.get(i));
+//            }
+//        }
+//        if (suma == 0 && sumaCredit == 0) {
+//            media.setText("Media: "+0.00);
+//        } else {
+//            medianr = suma / sumaCredit;
+//            media.setText("Media: "+medianr);
+//        }
     }
 
     @Override
@@ -264,8 +290,10 @@ Log.d("VERIFICARE crEDITE",""+stringCredit);
         float suma = 0, sumaCredit = 0;
         for (int i = 0; i < stringNota.size() && i < stringCredit.size(); i++) {
             Log.d("greseala",""+stringNota+"   "+stringCredit);
-            suma=suma+Float.parseFloat(stringNota.get(i))*Float.parseFloat(stringCredit.get(i));
-            sumaCredit=sumaCredit+Float.parseFloat(stringCredit.get(i));
+            if(!(stringNota.get(i).isEmpty())&&!(stringCredit.get(i).isEmpty())) {
+                suma = suma + Float.parseFloat(stringNota.get(i)) * Float.parseFloat(stringCredit.get(i));
+                sumaCredit = sumaCredit + Float.parseFloat(stringCredit.get(i));
+            }
         }
             if (suma == 0 && sumaCredit == 0) {
                 return 0;
@@ -279,10 +307,14 @@ Log.d("VERIFICARE crEDITE",""+stringCredit);
     public void stergere() {
        TextNote.get(TextNote.size()-1).setText("");
         TextNote.remove(TextNote.size()-1);
-        stringNota.remove(stringNota.size() - 1);
+      if(stringNota.size()!=0) {
+          stringNota.remove(stringNota.size() - 1);
+      }
         TextCredite.get(TextCredite.size()-1).setText("");
         TextCredite.remove(TextCredite.size()-1);
-        stringCredit.remove(stringCredit.size()- 1);
+      if (stringCredit.size()!=0){
+          stringCredit.remove(stringCredit.size()- 1);
+      }
         TextMaterie.get(TextMaterie.size()-1).setText("");
         TextMaterie.remove(TextMaterie.size()-1);
 //        for(int i=0;i<stringNota.size();i++){

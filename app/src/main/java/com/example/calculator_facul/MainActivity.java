@@ -43,20 +43,20 @@ public class MainActivity extends AppCompatActivity {
          lista=new Lista(items);
         recyclerView.setAdapter(lista);
         lista.notifyItemInserted(items.size()-1);
-        lista.stringNota.add("0");
-        lista.stringCredit.add("0");
+     //   lista.stringNota.add("0");
+     //   lista.stringCredit.add("0");
 
         i++;
 
         findViewById(R.id.add).setOnClickListener(v->{
             items.add(new Materie(counter,findViewById(R.id.nota),findViewById(R.id.credite)));
             lista.notifyItemInserted(items.size()-1);
-            lista.stringNota.add("0");
-            lista.stringCredit.add("0");
+         //   lista.stringNota.add("0");
+         //   lista.stringCredit.add("0");
             i++;
             counter++;
             recyclerView.scrollToPosition(items.size()-1);
-//            media.setText(String.valueOf(lista.media()));
+         //  media.setText("Media: "+String.valueOf(lista.media()));
         });
 
         findViewById(R.id.delete).setOnClickListener(v->{
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
               counter--;
               lista.notifyItemRemoved(items.size());
               lista.stergere();
-//              media.setText(String.valueOf(lista.media()));
+             media.setText("Media: "+String.valueOf(lista.media()));
 
 
           }
