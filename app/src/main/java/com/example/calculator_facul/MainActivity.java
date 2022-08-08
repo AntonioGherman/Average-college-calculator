@@ -50,16 +50,19 @@ public class MainActivity extends AppCompatActivity {
         i++;
 
         findViewById(R.id.add).setOnClickListener(v->{
-
-            items.add(new Materie(counter,findViewById(R.id.nota),findViewById(R.id.credite)));
-            Log.e("nr item adaugat",""+(items.size()-1));
-            lista.notifyItemInserted(items.size()-1);
-            Log.e("nr item adaugat dupa",""+(items.size()-1));
-         //   lista.stringNota.add("0");
-          //  lista.stringCredit.add("0");
-            i++;
-            counter++;
-            recyclerView.scrollToPosition(items.size()-1);
+            if(lista.textAdaugat) {
+                items.add(new Materie(counter, findViewById(R.id.nota), findViewById(R.id.credite)));
+                Log.e("nr item adaugat", "" + (items.size() - 1));
+                lista.notifyItemInserted(items.size() - 1);
+                Log.e("nr item adaugat dupa", "" + (items.size() - 1));
+                //   lista.stringNota.add("0");
+                //  lista.stringCredit.add("0");
+                i++;
+                counter++;
+                recyclerView.scrollToPosition(items.size() - 1);
+            }else {
+                Toast.makeText(MainActivity.this,"Introdu datele elementului anterior",Toast.LENGTH_LONG).show();
+            }
         });
 
         findViewById(R.id.delete).setOnClickListener(v->{

@@ -35,6 +35,7 @@ public class Lista extends RecyclerView.Adapter<ListaVH> {
     ArrayList<String> stringNota = new ArrayList<String>();
     ArrayList<String> stringCredit = new ArrayList<String>();
     boolean isOnTextChangedNote = false, isOnTextChangedCredit = false;
+    boolean textAdaugat;
 
 
     public Lista(ArrayList<Materie> items) {
@@ -61,6 +62,7 @@ public class Lista extends RecyclerView.Adapter<ListaVH> {
     public void onBindViewHolder(@NonNull ListaVH holder, @SuppressLint("RecyclerView") int position) {
         //    holder.textView.setText(String.valueOf(items.get(position).numar));
 
+        textAdaugat=false;
         TextView numar = holder.textView;
         TextMaterie.add(holder.materie);
         TextNote.add(holder.nota);
@@ -85,6 +87,7 @@ public class Lista extends RecyclerView.Adapter<ListaVH> {
 
                 if (isOnTextChangedNote) {
                     isOnTextChangedNote = false;
+                    textAdaugat=true;
 
                     try {
                         for (int i = 0; i <= position; i++) {
@@ -132,7 +135,7 @@ public class Lista extends RecyclerView.Adapter<ListaVH> {
                             }
                         }
                       //  Log.d("notele ",""+noteleInt);
-                        media.setText("Media: "+String.format("%.2f",(suma/sumaCredit)));
+                        media.setText("Media: "+String.format("%.02f",Math.floor((suma/sumaCredit)*100)/100));
 
 
 
@@ -167,7 +170,7 @@ public class Lista extends RecyclerView.Adapter<ListaVH> {
                         }
                     }
                 //    Log.d("notele ",""+noteleInt);
-                    media.setText("Media: "+String.format("%.2f",(suma/sumaCredit)));
+                    media.setText("Media: "+String.format("%.02f",Math.floor((suma/sumaCredit)*100)/100));
 
                 }
 
@@ -240,7 +243,7 @@ public class Lista extends RecyclerView.Adapter<ListaVH> {
                             }
                         }
                        // Log.d("creditele",""+crediteleInt);
-                        media.setText("Media: "+String.format("%.2f",(suma/sumaCredit)));
+                        media.setText("Media: "+String.format("%.02f",Math.floor((suma/sumaCredit)*100)/100));
 
 
 
@@ -275,7 +278,7 @@ public class Lista extends RecyclerView.Adapter<ListaVH> {
                             }
                         }
                         Log.d("creditele",""+crediteleInt);
-                        media.setText("Media: "+String.format("%.2f",(suma/sumaCredit)));
+                        media.setText("Media: "+String.format("%.02f",Math.floor((suma/sumaCredit)*100)/100));
                     }
 
                 }
@@ -314,16 +317,22 @@ public class Lista extends RecyclerView.Adapter<ListaVH> {
 
     public void stergere() {
 Log.d("Textnote.size()",""+TextNote.size());
-        if(TextNote.size()!=0) {
+        if(TextNote.size()!=1) {
             TextNote.get(TextNote.size()-1).setText("");
             TextNote.remove(TextNote.size()-1);
+        }
+        else{
+            TextNote.get(0).setText("");
         }
       if(stringNota.size()!=0) {
           stringNota.remove(stringNota.size() - 1);
       }
-      if(TextCredite.size()!=0) {
+      if(TextCredite.size()!=1) {
           TextCredite.get(TextCredite.size() - 1).setText("");
           TextCredite.remove(TextCredite.size() - 1);
+      }
+      else{
+          TextCredite.get(0).setText("");
       }
       if (stringCredit.size()!=0){
           stringCredit.remove(stringCredit.size()- 1);
@@ -336,11 +345,9 @@ Log.d("Textnote.size()",""+TextNote.size());
         counter--;
         Log.e("counter=",""+counter);
         if(counter<=0){
-            TextMaterie.clear();
-            TextNote.clear();
-            TextCredite.clear();
             stringCredit.clear();
             stringNota.clear();
+            textAdaugat = false;
         }
 //        for(int i=0;i<stringNota.size();i++){
 //            if(stringNota.get(i).compareTo("")==0){
