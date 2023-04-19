@@ -45,18 +45,18 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
          lista=new Lista(items);
         recyclerView.setAdapter(lista);
-        lista.notifyItemInserted(items.size()-1);
+        lista.notifyItemInserted(items.size()-2);
+        lista.crestereCounter();
 
         i++;
 
         findViewById(R.id.add).setOnClickListener(v->{
             if(lista.textAdaugat) {
                 items.add(new Materie(counter, findViewById(R.id.nota), findViewById(R.id.credite)));
-                Log.e("nr item adaugat", "" + (items.size() - 1));
+
                 lista.notifyItemInserted(items.size() - 1);
-                Log.e("nr item adaugat dupa", "" + (items.size() - 1));
-                //   lista.stringNota.add("0");
-                //  lista.stringCredit.add("0");
+                lista.crestereCounter();
+
                 i++;
                 counter++;
                 recyclerView.scrollToPosition(items.size() - 1);
@@ -69,11 +69,8 @@ public class MainActivity extends AppCompatActivity {
           if(items.size()!=1) {
               items.remove(items.size() - 1);
              counter--;
-              lista.stergere();
-              Log.e("numarul de item INAINTE",""+items.size());
               lista.notifyItemRemoved(items.size());
-              Log.e("numarul de item DUPA",""+items.size());
-
+              lista.stergere();
 
 
           }
